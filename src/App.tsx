@@ -96,7 +96,7 @@ const App = () => {
       
         const Scene = new THREE.Scene();
         Scene.add(treeGroup);
-        // Add stars
+        // ndiro chui stars galaxy z3ma
         const starsGeometry = new THREE.BufferGeometry();
         const starCount = 10000;
         const starsMaterial = new THREE.PointsMaterial({
@@ -124,7 +124,7 @@ const App = () => {
         Scene.background = new THREE.Color(0xf0f0f);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-        camera.position.set(0, 15, 20); // Move camera higher to center the tree at the top
+        camera.position.set(0, 15, 20);
 
         const renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -268,54 +268,7 @@ const App = () => {
         return searchNode(node.right, value);
     };
 
-
-    const highlightNode = (value: number) => {
-        treeGroup.children.forEach((child) => {
-            if (child instanceof THREE.Group) {
-                child.children.forEach((node) => {
-                    if (node instanceof THREE.Mesh && node.geometry instanceof THREE.SphereGeometry) {
-                        const text = node.parent?.children.find(
-                            (c) => c instanceof THREE.Mesh && c.geometry instanceof TextGeometry
-                        );
-
-                        if (text) {
-                            const meshText = text as THREE.Mesh;
-                            if (meshText.geometry instanceof TextGeometry) {
-                                const charValue = Number(meshText.geometry);
-
-                                if (charValue === value) {
-                                    // Signal effect: pulsing animation
-                                    const originalScale = node.scale.clone();
-                                    const pulseUp = new TWEEN.Tween(node.scale)
-                                        .to(
-                                            {
-                                                x: originalScale.x * 1.5,
-                                                y: originalScale.y * 1.5,
-                                                z: originalScale.z * 1.5
-                                            },
-                                            500
-                                        )
-                                        .easing(TWEEN.Easing.Quadratic.Out);
-
-                                    const pulseDown = new TWEEN.Tween(node.scale)
-                                        .to({x: originalScale.x, y: originalScale.y, z: originalScale.z}, 500)
-                                        .easing(TWEEN.Easing.Quadratic.In);
-
-                                    pulseUp.chain(pulseDown);
-                                    pulseDown.chain(pulseUp);
-                                    pulseUp.start();
-
-                                    // Change color to indicate highlighting
-                                    (node.material as THREE.MeshStandardMaterial).color.set(0xffd700); // Gold color
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        });
-    };
-
+    
 
     const handleInsert = () => {
         const newRoot = insert(root, inputValue);
@@ -326,6 +279,10 @@ const App = () => {
     };
 
     const handleDelete = () => {
+        if (!root) {
+            alert('The tree is empty!');
+            return;
+        }
         const newRoot = deleteNode(root, inputValue);
         setRoot(newRoot);
         treeGroup.clear();
@@ -340,12 +297,13 @@ const App = () => {
 
         const foundNode = searchNode(root, inputValue);
         if (foundNode) {
-            alert(`Node with value ${inputValue} found!`);
-            highlightNode(inputValue);
+            alert(`Node with value ${inputValue} founded.`);
+
         } else {
             alert(`Node with value ${inputValue} not found.`);
         }
     };
+
 
 
     return (
