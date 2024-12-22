@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
@@ -280,28 +280,30 @@ const App = () => {
   
             if (text) {
               const meshText = text as THREE.Mesh;
-              const charValue = Number(meshText.geometry.parameters.text);
+              if (meshText.geometry instanceof TextGeometry) {
+                const charValue = Number(meshText.geometry.parameters.text);
   
-              if (charValue === value) {
-                // Signal effect: pulsing animation
-                const originalScale = node.scale.clone();
-                const pulseUp = new TWEEN.Tween(node.scale)
-                  .to(
-                    { x: originalScale.x * 1.5, y: originalScale.y * 1.5, z: originalScale.z * 1.5 },
-                    500
-                  )
-                  .easing(TWEEN.Easing.Quadratic.Out);
+                if (charValue === value) {
+                  // Signal effect: pulsing animation
+                  const originalScale = node.scale.clone();
+                  const pulseUp = new TWEEN.Tween(node.scale)
+                    .to(
+                      { x: originalScale.x * 1.5, y: originalScale.y * 1.5, z: originalScale.z * 1.5 },
+                      500
+                    )
+                    .easing(TWEEN.Easing.Quadratic.Out);
   
-                const pulseDown = new TWEEN.Tween(node.scale)
-                  .to({ x: originalScale.x, y: originalScale.y, z: originalScale.z }, 500)
-                  .easing(TWEEN.Easing.Quadratic.In);
+                  const pulseDown = new TWEEN.Tween(node.scale)
+                    .to({ x: originalScale.x, y: originalScale.y, z: originalScale.z }, 500)
+                    .easing(TWEEN.Easing.Quadratic.In);
   
-                pulseUp.chain(pulseDown);
-                pulseDown.chain(pulseUp);
-                pulseUp.start();
+                  pulseUp.chain(pulseDown);
+                  pulseDown.chain(pulseUp);
+                  pulseUp.start();
   
-                // Change color to indicate highlighting
-                (node.material as THREE.MeshStandardMaterial).color.set(0xffd700); // Gold color
+                  // Change color to indicate highlighting
+                  (node.material as THREE.MeshStandardMaterial).color.set(0xffd700); // Gold color
+                }
               }
             }
           }
@@ -309,7 +311,6 @@ const App = () => {
       }
     });
   };
-  
   
   
 
