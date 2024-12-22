@@ -352,7 +352,8 @@ const App = () => {
                     left: 10,
                     backgroundColor: 'white',
                     color: 'black',
-                    borderRadius: 0
+                    borderRadius: 0,
+                    padding:2,
                 }}>Crafted by <strong>Sidali DJEGHBAL </strong></p>
             </footer>
             <div ref={mountRef}/>
