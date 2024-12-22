@@ -353,7 +353,7 @@ const App = () => {
                     backgroundColor: 'white',
                     color: 'black',
                     borderRadius: 0
-                }}>Crafted by <strong>Sidali DJEGHBAL </strong><br /> Built using Three.js and TWEEN.JS.</p>
+                }}>Crafted by <strong>Sidali DJEGHBAL </strong></p>
             </footer>
             <div ref={mountRef}/>
         </div>
