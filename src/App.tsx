@@ -86,7 +86,6 @@ const insert = (node: AVLNode | null, value: number): AVLNode => {
 const App = () => {
     const mountRef = useRef<HTMLDivElement>(null);
     const [root, setRoot] = useState<AVLNode | null>(null);
-    const setScene = useState<THREE.Scene | null>(null);
     const [treeGroup] = useState(new THREE.Group());
     const [font, setFont] = useState(null);
     const [inputValue, setInputValue] = useState<number>(0);
