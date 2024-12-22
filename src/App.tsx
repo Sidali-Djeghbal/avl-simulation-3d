@@ -331,7 +331,7 @@ const App = () => {
                 left: 255,
                 backgroundColor: 'white',
                 color: 'black',
-                borderRadius: 0
+                borderRadius: 0,
             }}>
                 Delete
             </button>
@@ -341,7 +341,7 @@ const App = () => {
                 left: 335,
                 backgroundColor: 'white',
                 color: 'black',
-                borderRadius: 0
+                borderRadius: 0,
             }}>
                 Search
             </button>
