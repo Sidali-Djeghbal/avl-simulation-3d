@@ -321,7 +321,7 @@ const App = () => {
                 left: 180,
                 backgroundColor: 'white',
                 color: 'black',
-                borderRadius: 0
+                borderRadius: 0,
             }}>
                 Insert
             </button>
