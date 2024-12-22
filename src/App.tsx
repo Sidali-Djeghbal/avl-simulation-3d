@@ -4,6 +4,8 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {FontLoader} from 'three/examples/jsm/loaders/FontLoader';
 import {TextGeometry} from 'three/examples/jsm/geometries/TextGeometry';
 import TWEEN from '@tweenjs/tween.js';
+import './App.css'
+
 
 // AVL Tree Node
 class AVLNode {
@@ -388,12 +390,12 @@ const App = () => {
             <footer>
                 <p style={{
                     position: 'absolute',
-                    bottom: 0,
-                    left: 20,
+                    bottom: -5,
+                    left: 10,
                     backgroundColor: 'white',
                     color: 'black',
                     borderRadius: 0
-                }}>Crafted by Sidali DJEGHBAL - Built using Three.js and TWEEN.JS.</p>
+                }}>Crafted by <strong>Sidali DJEGHBAL </strong><br /> Built using Three.js and TWEEN.JS.</p>
             </footer>
             <div ref={mountRef}/>
         </div>
