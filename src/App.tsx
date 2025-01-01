@@ -96,7 +96,7 @@ const App = () => {
       
         const Scene = new THREE.Scene();
         Scene.add(treeGroup);
-        // ndiro chui stars galaxy z3ma
+        // ndiro chui stars, galaxy z3ma
         const starsGeometry = new THREE.BufferGeometry();
         const starCount = 10000;
         const starsMaterial = new THREE.PointsMaterial({
@@ -274,8 +274,8 @@ const App = () => {
         const newRoot = insert(root, inputValue);
         setRoot(newRoot);
 
-        treeGroup.clear(); // Clear only the tree group
-        renderTree(newRoot, 0, 5); // Adjust y-coordinate to start tree at the top
+        treeGroup.clear(); // clear tree group only
+        renderTree(newRoot, 0, 5); // adjust y-coordinates to start tree at the top
     };
 
     const handleDelete = () => {
